@@ -1,0 +1,17 @@
+.background {
+  min-width: 320px;
+  max-width: 375px;
+  background-image: url(/src/assets/images/mob/main-mob-img-min.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-resolution: 192dpi) {
+  .background {
+    background-image: url(/src/assets/images/mob/main-mob-img@2x-min.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}

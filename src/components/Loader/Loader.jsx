@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './Loader.module.css';
 
 const Loader = () => {
   return (
-    <div>
-      <h2>Loader</h2>
+    <div className={styles.background}>
+      <h2>petlove</h2>
     </div>
   );
 };
