@@ -11,7 +11,7 @@ const NotFoundPage = React.lazy(() =>
 function App() {
   return (
     <div>
-      <Suspense fallback={<Loader />}>
+      <Suspense>
         <Routes>
           <Route path="/" element={<MainLayout />} />
           <Route path="/home" element={<HomePage />} />
