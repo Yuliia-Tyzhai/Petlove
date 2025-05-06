@@ -1,17 +1,51 @@
-.background {
-  min-width: 320px;
-  max-width: 375px;
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-image: url(/src/assets/images/mob/main-mob-img-min.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  transition: opacity 0.5s ease-in-out;
 }
 
-@media (min-resolution: 192dpi) {
-  .background {
-    background-image: url(/src/assets/images/mob/main-mob-img@2x-min.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.progressCircle {
+  width: 273px;
+  height: 273px;
+  border-radius: 100%;
+  border: 6px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.logo {
+  width: 190px;
+  height: 50px;
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

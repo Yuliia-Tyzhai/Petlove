@@ -1,16 +1,24 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
 import Loader from '../../components/Loader/Loader';
 import Header from '../../components/Header/Header';
+import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
+  const [loadingComplete, setLoadingComplete] = useState(false);
+
   return (
     <div>
-      <Loader />
-      <Header />
-      <main>
-        <Outlet />
-      </main>
+      {!loadingComplete && (
+        <Loader onComplete={() => setLoadingComplete(true)} />
+      )}
+      {loadingComplete && (
+        <>
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+        </>
+      )}
     </div>
   );
 };
