@@ -26,7 +26,8 @@ const Loader = ({ onComplete }) => {
         <span>{progress}%</span>
       </div>
       {isLoaded && (
-        <img src="/src/assets/logo.png" alt="Logo" className={styles.logo} />
+        // <img src="/src/assets/logo.png" alt="Logo" className={styles.logo} />
+        <h2>Petlove</h2>
       )}
     </div>
   );

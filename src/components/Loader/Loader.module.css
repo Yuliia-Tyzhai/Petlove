@@ -1,8 +1,11 @@
 .loaderContainer {
-  position: fixed;
+  /* position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  left: 0; */
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -28,9 +31,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: #ffffff;
 }
 
 .logo {
@@ -47,5 +52,37 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .loaderContainer {
+    min-width: 768px;
+    background-image: url(/src/assets/images/tab/main-tab-img-min.png);
+  }
+
+  .progressCircle {
+    width: 399px;
+    height: 399px;
+    border-radius: 100%;
+    font-size: 80px;
+  }
+
+  .logo {
+    width: 374px;
+    height: 100px;
+    animation: fadeIn 0.8s ease-in-out forwards;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .loaderContainer {
+    min-width: 1280px;
+    background-image: url(/src/assets/images/desk/main-desk-img-min.png);
+  }
+
+  .progressCircle {
+    width: 398px;
+    height: 398px;
   }
 }
