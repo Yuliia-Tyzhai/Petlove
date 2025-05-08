@@ -24,4 +24,7 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .logo {
+    margin-right: 313px;
+  }
 }
