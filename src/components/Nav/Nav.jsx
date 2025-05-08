@@ -7,19 +7,25 @@ const Nav = () => {
     <nav className={styles.nav}>
       <NavLink
         to="/news"
-        className={({ isActive }) => (isActive ? styles.active : '')}
+        className={({ isActive }) =>
+          isActive ? `${styles.active} ${styles.news}` : styles.news
+        }
       >
         News
       </NavLink>
       <NavLink
         to="/notices"
-        className={({ isActive }) => (isActive ? styles.active : '')}
+        className={({ isActive }) =>
+          isActive ? `${styles.active} ${styles.notices}` : styles.notices
+        }
       >
-        Notices
+        Find pet
       </NavLink>
       <NavLink
         to="/friends"
-        className={({ isActive }) => (isActive ? styles.active : '')}
+        className={({ isActive }) =>
+          isActive ? `${styles.active} ${styles.friends}` : styles.friends
+        }
       >
         Our Friends
       </NavLink>
