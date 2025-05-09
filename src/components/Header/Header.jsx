@@ -3,6 +3,7 @@ import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
 import AuthNav from '../AuthNav/AuthNav';
 import UserNav from '../UserNav/UserNav';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { useSelector } from 'react-redux';
 import styles from './Header.module.css';
 
@@ -14,6 +15,7 @@ const Header = () => {
       <Logo />
       <Nav />
       {isAuthenticated ? <UserNav /> : <AuthNav />}
+      <BurgerMenu />
     </header>
   );
 };

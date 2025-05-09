@@ -1,0 +1,26 @@
+.menuContainer {
+  position: relative;
+}
+
+.burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  display: none;
+}
