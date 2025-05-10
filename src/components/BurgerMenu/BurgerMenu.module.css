@@ -73,6 +73,12 @@
   .burgerMenu {
     width: 376px;
   }
+
+  .menuAuthNav {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (min-width: 1280px) {
