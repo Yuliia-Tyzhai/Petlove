@@ -6,17 +6,22 @@ const Loader = ({ onComplete }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    let currentProgress = 0;
     const interval = setInterval(() => {
-      setProgress(prev => (prev < 100 ? prev + 1 : 100));
-      if (progress === 100) {
+      if (currentProgress < 100) {
+        currentProgress += 1;
+        setProgress(currentProgress);
+      } else {
+        clearInterval(interval);
         setTimeout(() => {
           setIsLoaded(true);
           if (onComplete) onComplete();
         }, 500);
       }
     }, 5);
+
     return () => clearInterval(interval);
-  }, [progress, onComplete]);
+  }, [onComplete]);
 
   return (
     <div

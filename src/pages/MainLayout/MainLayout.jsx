@@ -8,10 +8,9 @@ const MainLayout = () => {
 
   return (
     <div>
-      {!loadingComplete && (
+      {!loadingComplete ? (
         <Loader onComplete={() => setLoadingComplete(true)} />
-      )}
-      {loadingComplete && (
+      ) : (
         <>
           <Header />
           <main>
