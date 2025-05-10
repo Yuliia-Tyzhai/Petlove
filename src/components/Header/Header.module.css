@@ -37,7 +37,18 @@
   color: #262626;
 }
 
-/* ✅ Планшет */
+.tabletNav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 767px) {
+  .tabletNav > *:not(.burger) {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   .tabletNav {
     display: flex;

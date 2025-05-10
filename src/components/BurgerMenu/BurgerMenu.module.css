@@ -4,12 +4,9 @@
   right: 0;
   width: 250px;
   height: 100vh;
-  background: white;
+  background: #ffffff;
   display: none;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .open {
@@ -34,16 +31,7 @@
   fill: currentColor;
 }
 
-.burgerNav {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-}
-
-.burgerAuthNav {
+.menuAuthNav {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -52,10 +40,16 @@
   color: #666;
 }
 
-.burgerMenu .menuNav a {
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menuNav a {
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
-  padding: 15px 31px;
+  padding: 15px 20px;
   width: 119px;
   height: 48px;
   font-weight: 500;
@@ -65,8 +59,14 @@
   color: #262626;
 }
 
-.burgerMenu .menuNav a:hover {
+.menuNav a:hover {
   border: 1px solid #f6b83d;
+}
+
+.menuAuthNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 @media (min-width: 768px) {

@@ -2,9 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Nav.module.css';
 
-const Nav = () => {
+const Nav = ({ className }) => {
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${className}`}>
       <NavLink
         to="/news"
         className={({ isActive }) =>

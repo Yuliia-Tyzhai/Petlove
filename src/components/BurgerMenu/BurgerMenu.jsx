@@ -16,12 +16,14 @@ const BurgerMenu = ({ isMenuOpen, toggleMenu }) => {
         </svg>
       </button>
 
-      <Nav className={styles.menuNav} />
-      {!isAuthenticated ? (
-        <AuthNav className={styles.menuAuthNav} />
-      ) : (
-        <UserNav className={styles.menuUserNav} />
-      )}
+      <div className={styles.menuContent}>
+        <Nav className={styles.menuNav} />
+        {!isAuthenticated ? (
+          <AuthNav className={styles.menuAuthNav} />
+        ) : (
+          <UserNav className={styles.menuUserNav} />
+        )}
+      </div>
     </nav>
   );
 };
