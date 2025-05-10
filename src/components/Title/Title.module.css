@@ -1,0 +1,29 @@
+/* .title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 24px;
+  }
+} */
+
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: #262626;
+  text-align: start;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 54px;
+  }
+}

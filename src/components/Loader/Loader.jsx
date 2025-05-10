@@ -6,7 +6,7 @@ const Loader = ({ onComplete }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    let currentProgress = 0;
+    let currentProgress = 0; //
     const interval = setInterval(() => {
       if (currentProgress < 100) {
         currentProgress += 1;
@@ -30,10 +30,7 @@ const Loader = ({ onComplete }) => {
       <div className={styles.progressCircle}>
         <span>{progress}%</span>
       </div>
-      {isLoaded && (
-        // <img src="/src/assets/logo.png" alt="Logo" className={styles.logo} />
-        <h2>Petlove</h2>
-      )}
+      {isLoaded && <h2>Petlove</h2>}
     </div>
   );
 };

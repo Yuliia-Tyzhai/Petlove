@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './AuthNav.module.css';
 
-const AuthNav = ({ setIsRegistrationOpen }) => {
+const AuthNav = () => {
   return (
     <nav className={styles.authNav}>
       <NavLink
@@ -13,12 +13,16 @@ const AuthNav = ({ setIsRegistrationOpen }) => {
       >
         log in
       </NavLink>
-      <button
-        className={styles.registration}
-        onClick={() => setIsRegistrationOpen(true)}
+      <NavLink
+        to="/register"
+        className={({ isActive }) =>
+          isActive
+            ? `${styles.active} ${styles.registration}`
+            : styles.registration
+        }
       >
         registration
-      </button>
+      </NavLink>
     </nav>
   );
 };
