@@ -1,11 +1,71 @@
 .header {
   display: flex;
-  flex-direction: row;
-  margin-left: 64px;
-  margin-top: 43px;
-  margin-right: 64px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
 }
 
-.logo {
-  margin-right: 313px;
+.desktopNav {
+  display: none;
+}
+
+.burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.open {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}
+
+/* ✅ Планшет */
+@media (min-width: 768px) {
+  .tabletNav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .mobileMenu {
+    width: 376px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tabletNav {
+    display: none;
+  }
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .burger,
+  .mobileMenu {
+    display: none;
+  }
 }

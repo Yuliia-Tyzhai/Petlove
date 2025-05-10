@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import Nav from '../Nav/Nav';
+import AuthNav from '../AuthNav/AuthNav';
+import UserNav from '../UserNav/UserNav';
+import { useSelector } from 'react-redux';
 import styles from './BurgerMenu.module.css';
 
-const BurgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(prev => !prev);
-  };
+const BurgerMenu = ({ isMenuOpen, toggleMenu }) => {
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
   return (
-    <div className={styles.menuContainer}>
-      <button className={styles.burger} onClick={toggleMenu}>
-        <svg className={styles.icon}>
-          <use href="/sprite.svg#burger-icon" />
+    <nav className={`${styles.burgerMenu} ${isMenuOpen ? styles.open : ''}`}>
+      <button className={styles.closeMenu} onClick={toggleMenu}>
+        <svg className={styles.closeIcon}>
+          <use href="/sprite.svg#close-icon" />
         </svg>
       </button>
 
-      <nav className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
-        <NavLink to="/news">News</NavLink>
-        <NavLink to="/notices">Find pet</NavLink>
-        <NavLink to="/friends">Our Friends</NavLink>
-      </nav>
-    </div>
+      <Nav className={styles.menuNav} />
+      {!isAuthenticated ? (
+        <AuthNav className={styles.menuAuthNav} />
+      ) : (
+        <UserNav className={styles.menuUserNav} />
+      )}
+    </nav>
   );
 };
 

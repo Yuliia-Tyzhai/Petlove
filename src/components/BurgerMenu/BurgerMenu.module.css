@@ -1,15 +1,31 @@
-.menuContainer {
-  position: relative;
+.burgerMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100vh;
+  background: white;
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.burger {
+.open {
+  display: flex;
+}
+
+.closeMenu {
+  display: inline-block;
   background: none;
   border: none;
   cursor: pointer;
   padding: 10px;
+  align-self: flex-end;
 }
 
-.icon {
+.closeIcon {
   display: inline-block;
   width: 32px;
   height: 32px;
@@ -18,9 +34,49 @@
   fill: currentColor;
 }
 
-.menu {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  display: none;
+.burgerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.burgerAuthNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #666;
+}
+
+.burgerMenu .menuNav a {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 15px 31px;
+  width: 119px;
+  height: 48px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}
+
+.burgerMenu .menuNav a:hover {
+  border: 1px solid #f6b83d;
+}
+
+@media (min-width: 768px) {
+  .burgerMenu {
+    width: 376px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .burgerMenu {
+    display: none;
+  }
 }
