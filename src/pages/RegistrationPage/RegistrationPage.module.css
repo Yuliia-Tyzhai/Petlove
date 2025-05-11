@@ -5,6 +5,12 @@
   gap: 20px;
 }
 
+.formContainer {
+  border-radius: 30px;
+  background: #ffffff;
+  padding: 27px 20px;
+}
+
 .title {
   font-size: 28px;
   font-weight: bold;
@@ -13,4 +19,9 @@
 
 .loginLink {
   font-size: 16px;
+}
+
+.registrationPetBlock {
+  border-radius: 30px;
+  background-color: #f6b83d;
 }

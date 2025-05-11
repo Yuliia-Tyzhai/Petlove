@@ -2,13 +2,21 @@
   font-family: Manrope, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  background-color: #f9f9f9;
 }
 
 a {
   text-decoration: inherit;
+  color: inherit;
 }
 
 button {
   font-family: inherit;
   cursor: pointer;
+}
+
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
 }
