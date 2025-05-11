@@ -1,9 +1,13 @@
 import React from 'react';
+import UserCard from '../../components/UserCard/UserCard';
+import MyNotices from '../../components/MyNotices/MyNotices';
+import styles from './ProfilePage.module.css';
 
 const ProfilePage = () => {
   return (
-    <div>
-      <h2>ProfilePage</h2>
+    <div className={styles.profilePage}>
+      <UserCard />
+      <MyNotices />
     </div>
   );
 };
