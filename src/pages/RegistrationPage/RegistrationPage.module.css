@@ -6,6 +6,7 @@
 }
 
 .formContainer {
+  width: 335px;
   border-radius: 30px;
   background: #ffffff;
   padding: 27px 20px;
@@ -24,4 +25,62 @@
 .registrationPetBlock {
   border-radius: 30px;
   background-color: #f6b83d;
+}
+
+@media screen and (min-width: 768px) {
+  .registrationPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .formContainer {
+    width: 704px;
+    border-radius: 60px;
+    padding: 30px 140px;
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .loginLink {
+    font-size: 16px;
+  }
+
+  .registrationPetBlock {
+    border-radius: 60px;
+    width: 704px;
+    height: 302px;
+    background-color: #f6b83d;
+    padding-right: 90px;
+    padding-left: 250px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .registrationPage {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    gap: 32px;
+    padding: 32px;
+    margin: 0 auto;
+  }
+
+  .registrationPetBlock {
+    width: 592px;
+    height: 654px;
+    padding: 0;
+  }
+
+  .formContainer {
+    border-radius: 60px;
+    width: 592px;
+    height: 654px;
+    padding: 77px 84px;
+  }
 }
