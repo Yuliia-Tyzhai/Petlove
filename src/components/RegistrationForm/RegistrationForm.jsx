@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../../services/api';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import styles from './RegistrationForm.module.css';
 
 const schema = yup.object().shape({
@@ -18,9 +21,14 @@ const schema = yup.object().shape({
     .string()
     .min(7, 'Password must be at least 7 characters')
     .required('Password is required'),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Passwords must match')
+    .required('Confirm password is required'),
 });
 
-const RegistrationForm = ({ onSubmit }) => {
+const RegistrationForm = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -28,6 +36,20 @@ const RegistrationForm = ({ onSubmit }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const onSubmit = async data => {
+    try {
+      await registerUser({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
+      toast.success('Registration successful!');
+      navigate('/login');
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Registration failed');
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -56,21 +78,21 @@ const RegistrationForm = ({ onSubmit }) => {
       )}
 
       <input
-        {...register('password')}
+        {...register('confirmPassword')}
         type="password"
         placeholder="Confirm password"
-        className={`${styles.input} ${styles.confirm}`}
+        className={styles.input}
       />
+      {errors.confirmPassword && (
+        <p className={styles.error}>{errors.confirmPassword.message}</p>
+      )}
 
       <button type="submit" className={styles.submitBtn}>
         Registration
       </button>
 
       <p className={styles.loginLink}>
-        Already have an account?{' '}
-        <span className={styles.login}>
-          <Link to="/login">Log in</Link>
-        </span>
+        Already have an account? <Link to="/login">Log in</Link>
       </p>
     </form>
   );

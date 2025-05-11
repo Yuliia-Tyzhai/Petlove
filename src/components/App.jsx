@@ -6,6 +6,7 @@ const HomePage = React.lazy(() => import('../pages/HomePage/HomePage'));
 const RegistrationPage = React.lazy(() =>
   import('../pages/RegistrationPage/RegistrationPage')
 );
+const LoginPage = React.lazy(() => import('../pages/LoginPage/LoginPage'));
 const NotFoundPage = React.lazy(() =>
   import('../pages/NotFoundPage/NotFoundPage')
 );
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route path="/home" element={<HomePage />} />
           <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
