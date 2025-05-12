@@ -12,8 +12,7 @@
 
 .titleContainer {
   display: block;
-  min-width: 320px;
-  max-width: 375px;
+  max-width: 335px;
   background-color: #f6b83d;
   border-radius: 30px;
   margin: 0 auto;
@@ -31,8 +30,8 @@
 .mainImage {
   display: block;
   border-radius: 30px;
-  min-width: 320px;
-  max-width: 375px;
+  min-width: 335px;
+
   margin: 0 auto;
 }
 
@@ -42,7 +41,7 @@
   }
 
   .titleContainer {
-    min-width: 768px;
+    min-width: 704px;
     border-radius: 60px;
     margin: 0 auto;
     padding: 123px 32px 164px 32px;
@@ -68,7 +67,7 @@
   .titleContainer {
     display: flex;
     gap: 73px;
-    min-width: 1280px;
+    min-width: 1216px;
     border-radius: 60px;
     margin: 0 auto;
     padding: 112px 64px 32px 64px;
@@ -82,10 +81,11 @@
     min-width: 255px;
     text-align: left;
     display: block;
+    margin-top: 198px;
   }
 
   .mainImage {
     border-radius: 60px;
-    max-width: 704px;
+    min-width: 1216px;
   }
 }
