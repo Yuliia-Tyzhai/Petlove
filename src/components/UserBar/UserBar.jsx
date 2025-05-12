@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './UserBar.module.css';
 
 const UserBar = ({ user }) => {
+  if (!user) return null;
+
   return (
     <div className={styles.userBar}>
       <img

@@ -1,12 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import UserNav from '../UserNav/UserNav';
-import AuthNav from '../AuthNav/AuthNav';
 import styles from './Nav.module.css';
 
 const Nav = ({ className }) => {
-  const token = localStorage.getItem('token');
-
   return (
     <nav className={`${styles.nav} ${className}`}>
       <NavLink
@@ -33,7 +29,6 @@ const Nav = ({ className }) => {
       >
         Our Friends
       </NavLink>
-      {token ? <UserNav /> : <AuthNav />}{' '}
     </nav>
   );
 };

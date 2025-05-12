@@ -2,8 +2,10 @@ import React from 'react';
 import Nav from '../Nav/Nav';
 import AuthNav from '../AuthNav/AuthNav';
 import UserNav from '../UserNav/UserNav';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import styles from './BurgerMenu.module.css';
+import LogOutBtn from '../LogOutBtn/LogOutBtn';
 
 const BurgerMenu = ({ isMenuOpen, toggleMenu }) => {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
@@ -21,7 +23,10 @@ const BurgerMenu = ({ isMenuOpen, toggleMenu }) => {
         {!isAuthenticated ? (
           <AuthNav className={styles.menuAuthNav} />
         ) : (
-          <UserNav className={styles.menuUserNav} />
+          <div className={styles.userSection}>
+            <UserNav className={styles.menuUserNav} />
+            <LogOutBtn />
+          </div>
         )}
       </div>
     </nav>

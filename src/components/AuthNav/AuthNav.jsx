@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux'; // Імпортуємо useSelector для доступу до Redux-стану
 import styles from './AuthNav.module.css';
 
 const AuthNav = () => {
-  const token = localStorage.getItem('token'); // ✅ Перевіряємо авторизацію
-  if (token) return null; // ❌ При авторизації `AuthNav` не показується
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated); // Перевіряємо, чи користувач авторизований
+
+  if (isAuthenticated) return null; // Якщо користувач авторизований, не показуємо AuthNav
 
   return (
     <nav className={styles.authNav}>
