@@ -72,12 +72,16 @@
     border-radius: 60px;
     margin: 0 auto;
     padding: 112px 64px 32px 64px;
+    position: relative;
+    z-index: 1;
   }
 
   .mainText {
     font-size: 18px;
-    margin-left: 417px;
+    margin: 0 auto;
     min-width: 255px;
+    text-align: left;
+    display: block;
   }
 
   .mainImage {
