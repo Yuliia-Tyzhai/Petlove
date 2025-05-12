@@ -1,20 +1,17 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import styles from './UserBar.module.css';
+import React from 'react';
+import styles from './UserBar.module.css';
 
-// const UserBar = ({ avatar, name }) => {
-//   return (
-//     <Link to="/profile" className={styles.userBar}>
-//       {avatar ? (
-//         <img src={avatar} alt="User Avatar" className={styles.avatar} />
-//       ) : (
-//         <svg className={styles.defaultAvatar}>
-//           <use href="/sprite.svg#icon-user-02" />
-//         </svg>
-//       )}
-//       <span className={styles.username}>{name || 'User'}</span>
-//     </Link>
-//   );
-// };
+const UserBar = ({ user }) => {
+  return (
+    <div className={styles.userBar}>
+      <img
+        src={user.avatar || '/default-avatar.png'}
+        alt="User Avatar"
+        className={styles.avatar}
+      />
+      <span>{user.name}</span>
+    </div>
+  );
+};
 
-// export default UserBar;
+export default UserBar;

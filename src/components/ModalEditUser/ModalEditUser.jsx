@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { updateUser } from '../../services/api';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/authSlice';
 import { toast } from 'react-toastify';
 import styles from './ModalEditUser.module.css';
 
@@ -25,6 +27,7 @@ const schema = yup.object().shape({
 });
 
 const ModalEditUser = ({ closeModal }) => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -35,11 +38,13 @@ const ModalEditUser = ({ closeModal }) => {
 
   const onSubmit = async data => {
     try {
-      await updateUser(data);
+      const updatedUser = await updateUser(data);
+      dispatch(setUser(updatedUser));
       toast.success('Profile updated successfully!');
       closeModal();
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Update failed');
+      const errorMsg = error.response?.data?.message || 'Update failed';
+      toast.error(`Error: ${errorMsg}`);
     }
   };
 

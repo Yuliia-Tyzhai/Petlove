@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../services/api';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { loginUser } from '../../services/api';
+import { setAuth } from '../../redux/authSlice';
 import styles from './LoginForm.module.css';
 
 const schema = yup.object().shape({
@@ -23,6 +25,8 @@ const schema = yup.object().shape({
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -33,11 +37,12 @@ const LoginForm = () => {
 
   const onSubmit = async data => {
     try {
-      const response = await loginUser(data);
-      localStorage.setItem('token', response.token);
+      const response = await loginUser(data, dispatch);
+      dispatch(setAuth({ user: response.user, isAuthenticated: true }));
+      toast.success('Login successful!');
       navigate('/profile');
     } catch (error) {
-      toast.error(error);
+      toast.error(error.response?.data?.message || 'Login failed');
     }
   };
 

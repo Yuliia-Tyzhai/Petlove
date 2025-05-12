@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setAuthenticated } from '../../redux/authSlice';
 import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
 import AuthNav from '../AuthNav/AuthNav';
 import UserNav from '../UserNav/UserNav';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
-import { useSelector } from 'react-redux';
 import styles from './Header.module.css';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    dispatch(setAuthenticated(!!token));
+  }, [dispatch]);
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);

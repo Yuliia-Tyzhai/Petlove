@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getCurrentUser } from '../../services/api';
 import EditUserBtn from '../EditUserBtn/EditUserBtn';
 import PetsBlock from '../PetsBlock/PetsBlock';
@@ -7,6 +8,7 @@ import styles from './UserCard.module.css';
 
 const UserCard = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -15,10 +17,11 @@ const UserCard = () => {
         setUser(userData);
       } catch (error) {
         console.error('Failed to fetch user data:', error);
+        navigate('/login');
       }
     };
     fetchUser();
-  }, []);
+  }, [navigate]);
 
   if (!user) return <p>Loading...</p>;
 

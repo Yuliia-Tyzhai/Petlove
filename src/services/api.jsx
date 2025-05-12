@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAuth, logout } from '../redux/authSlice';
 
 const API = axios.create({
   baseURL: 'https://petlove.b.goit.study/api',
@@ -13,10 +14,11 @@ export const registerUser = async userData => {
   }
 };
 
-export const loginUser = async userData => {
+export const loginUser = async (userData, dispatch) => {
   try {
     const response = await API.post('/users/signin', userData);
     localStorage.setItem('token', response.data.token);
+    dispatch(setAuth({ user: response.data.user, isAuthenticated: true }));
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || 'Login failed';
@@ -37,25 +39,39 @@ export const getCurrentUser = async () => {
   }
 };
 
-export const updateUser = async userData => {
+export const updateUser = async (userData, dispatch) => {
   try {
     const token = localStorage.getItem('token');
-    await API.patch('/users/current/edit', userData, {
+    if (!token) throw new Error('No token found');
+
+    const response = await API.patch('/users/current/edit', userData, {
       headers: { Authorization: `Bearer ${token}` },
     });
+
+    dispatch(setAuth({ user: response.data, isAuthenticated: true }));
   } catch (error) {
     throw error.response?.data?.message || 'Update failed';
   }
 };
 
-export const logoutUser = async () => {
+export const logoutUser = async dispatch => {
   try {
     const token = localStorage.getItem('token');
-    await API.post('/users/signout', null, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    if (!token) return;
+
+    await API.post(
+      '/users/signout',
+      {},
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        responseType: 'text',
+      }
+    );
+
     localStorage.removeItem('token');
+    dispatch(logout());
   } catch (error) {
+    console.error('Logout error:', error);
     throw error.response?.data?.message || 'Logout failed';
   }
 };
