@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setAuthenticated } from '../../redux/authSlice';
+import { setAuthenticated } from '../../redux/auth/authSlice';
 import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
 import AuthNav from '../AuthNav/AuthNav';

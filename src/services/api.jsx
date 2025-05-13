@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { setAuth, logout } from '../redux/authSlice';
+import { setAuth, logout } from '../redux/auth/authSlice';
+import { setPets, addPet, updatePet, deletePet } from '../redux/pets/petsSlice';
 
 const API = axios.create({
   baseURL: 'https://petlove.b.goit.study/api',
@@ -76,24 +77,62 @@ export const logoutUser = async dispatch => {
   }
 };
 
-export const addPet = async petData => {
+// export const getPets = async dispatch => {
+//   try {
+//     const token = localStorage.getItem('token');
+//     if (!token) throw new Error('No token found');
+
+//     const response = await API.get('/users/current/pets', {
+//       headers: { Authorization: `Bearer ${token}` },
+//     });
+
+//     dispatch(setPets(response.data));
+//     return response.data;
+//   } catch (error) {
+//     throw error.response?.data?.message || 'Failed to fetch pets';
+//   }
+// };
+
+export const addPetApi = async (petData, dispatch) => {
   try {
     const token = localStorage.getItem('token');
     const response = await API.post('/users/current/pets/add', petData, {
       headers: { Authorization: `Bearer ${token}` },
     });
+
+    dispatch(addPet(response.data));
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || 'Failed to add pet';
   }
 };
 
-export const deletePet = async petId => {
+export const updatePetApi = async (petId, updatedData, dispatch) => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await API.patch(
+      `/users/current/pets/${petId}`,
+      updatedData,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    dispatch(updatePet(response.data));
+    return response.data;
+  } catch (error) {
+    throw error.response?.data?.message || 'Failed to update pet';
+  }
+};
+
+export const deletePetApi = async (petId, dispatch) => {
   try {
     const token = localStorage.getItem('token');
     await API.delete(`/users/current/pets/remove/${petId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+
+    dispatch(deletePet(petId));
   } catch (error) {
     throw error.response?.data?.message || 'Failed to delete pet';
   }

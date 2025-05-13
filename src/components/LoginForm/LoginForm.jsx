@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { loginUser } from '../../services/api';
-import { setAuth } from '../../redux/authSlice';
+import { setAuth } from '../../redux/auth/authSlice';
 import styles from './LoginForm.module.css';
 
 const schema = yup.object().shape({

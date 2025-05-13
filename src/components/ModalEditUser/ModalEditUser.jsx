@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { updateUser } from '../../services/api';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../redux/authSlice';
+import { setUser } from '../../redux/auth/authSlice';
 import { toast } from 'react-toastify';
 import styles from './ModalEditUser.module.css';
 
