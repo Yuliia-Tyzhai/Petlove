@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { setAuth, logout } from '../redux/auth/authSlice';
 import { setPets, addPet, updatePet, deletePet } from '../redux/pets/petsSlice';
+import {
+  setNotices,
+  addFavoriteNotice,
+  removeFavoriteNotice,
+} from '../redux/notices/noticesSlice';
 
 const API = axios.create({
   baseURL: 'https://petlove.b.goit.study/api',
@@ -77,22 +82,6 @@ export const logoutUser = async dispatch => {
   }
 };
 
-// export const getPets = async dispatch => {
-//   try {
-//     const token = localStorage.getItem('token');
-//     if (!token) throw new Error('No token found');
-
-//     const response = await API.get('/users/current/pets', {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-
-//     dispatch(setPets(response.data));
-//     return response.data;
-//   } catch (error) {
-//     throw error.response?.data?.message || 'Failed to fetch pets';
-//   }
-// };
-
 export const addPetApi = async (petData, dispatch) => {
   try {
     const token = localStorage.getItem('token');
@@ -135,5 +124,32 @@ export const deletePetApi = async (petId, dispatch) => {
     dispatch(deletePet(petId));
   } catch (error) {
     throw error.response?.data?.message || 'Failed to delete pet';
+  }
+};
+
+export const fetchNotices = async dispatch => {
+  try {
+    const response = await API.get('/notices');
+    dispatch(setNotices(response.data));
+  } catch (error) {
+    throw error.response?.data?.message || 'Failed to fetch notices';
+  }
+};
+
+export const addNoticeToFavorites = async (notice, dispatch) => {
+  try {
+    await API.post('/notices/favorites', notice);
+    dispatch(addFavoriteNotice(notice));
+  } catch (error) {
+    throw error.response?.data?.message || 'Failed to add favorite notice';
+  }
+};
+
+export const removeNoticeFromFavorites = async (noticeId, dispatch) => {
+  try {
+    await API.delete(`/notices/favorites/remove/${noticeId}`);
+    dispatch(removeFavoriteNotice(noticeId));
+  } catch (error) {
+    throw error.response?.data?.message || 'Failed to remove favorite notice';
   }
 };

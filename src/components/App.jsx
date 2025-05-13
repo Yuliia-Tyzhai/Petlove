@@ -10,6 +10,7 @@ const LoginPage = React.lazy(() => import('../pages/LoginPage/LoginPage'));
 const ProfilePage = React.lazy(() =>
   import('../pages/ProfilePage/ProfilePage')
 );
+const AddPetPage = React.lazy(() => import('../pages/AddPetPage/AddPetPage'));
 const PrivateRoute = React.lazy(() =>
   import('../components/PrivateRoute/PrivateRoute')
 );
@@ -28,7 +29,9 @@ function App() {
 
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/add-pet" element={<AddPetPage />} />
           </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
