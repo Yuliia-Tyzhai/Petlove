@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Title from '../../components/Title/Title';
-import SearchField from '../components/SearchField/SearchField';
-import NewsList from '../components/NewsList/NewsList';
-import Pagination from '../components/Pagination/Pagination';
-import { fetchNews } from '../services/newsApi';
+import SearchField from '../../components/SearchField/SearchField';
+import NewsList from '../../components/NewsList/NewsList';
+import Pagination from '../../components/Pagination/Pagination';
+import { fetchNews } from '../../services/api';
 import styles from './NewsPage.module.css';
 
 const NewsPage = () => {

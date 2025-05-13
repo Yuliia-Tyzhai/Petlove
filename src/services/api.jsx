@@ -6,6 +6,7 @@ import {
   addFavoriteNotice,
   removeFavoriteNotice,
 } from '../redux/notices/noticesSlice';
+import { setNews } from '../redux/news/newsSlice';
 
 const API = axios.create({
   baseURL: 'https://petlove.b.goit.study/api',
@@ -151,5 +152,17 @@ export const removeNoticeFromFavorites = async (noticeId, dispatch) => {
     dispatch(removeFavoriteNotice(noticeId));
   } catch (error) {
     throw error.response?.data?.message || 'Failed to remove favorite notice';
+  }
+};
+
+export const fetchNews = async (searchQuery, page, dispatch) => {
+  try {
+    const response = await API.get('/news', {
+      params: { query: searchQuery, page, limit: 10 },
+    });
+
+    dispatch(setNews(response.data.results));
+  } catch (error) {
+    throw error.response?.data?.message || 'Failed to fetch news';
   }
 };
