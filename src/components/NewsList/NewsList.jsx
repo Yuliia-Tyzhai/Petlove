@@ -8,7 +8,7 @@ const NewsList = ({ news }) => {
       {news.length > 0 ? (
         news.map(item => <NewsItem key={item.id} news={item} />)
       ) : (
-        <p>No news found.</p>
+        <p>No news.</p>
       )}
     </div>
   );
